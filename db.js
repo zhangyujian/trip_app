@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 var config = require('./config').config;
 var ObjectId = Schema.ObjectId;
 
-//mongoose.connect(config.db);
-mongoose.connect('mongodb://Yujian:zhang@121.199.29.125:27017/trip');
+mongoose.connect(config.db);
+//mongoose.connect('mongodb://localhosts/trip');
 
 var ScenicSchema = new Schema({  
     id         :    { type : Number,default:0 },
