@@ -1,0 +1,42 @@
+[
+  {
+    "title": "故宫",
+    "province": "北京",
+    "city": "北京市",
+    "area": "4566098",
+    "geography": "123,123",
+    "weather": "温带季风气候",
+    "grade": "AAAAA",
+    "price": "60",
+    "buildtime": "1879",
+    "category": "123123123",
+    "content": "123123123",
+    "_id": "51f760d006c1149c25000002",
+    "__v": 0,
+    "son": [],
+    "date": "2013-07-30T06:44:32.978Z",
+    "publish": true,
+    "img": [],
+    "id": 0
+  },
+  {
+    "title": "颐和园",
+    "province": "北京",
+    "city": "北京市",
+    "area": "",
+    "geography": "",
+    "weather": "温带大陆性气候",
+    "grade": "选择级别",
+    "price": "",
+    "buildtime": "",
+    "category": "",
+    "content": "",
+    "_id": "51f1e37c938b384d78000002",
+    "__v": 0,
+    "son": [],
+    "date": "2013-07-26T02:48:28.236Z",
+    "publish": true,
+    "img": [],
+    "id": 0
+  }
+]

@@ -1,0 +1,43 @@
+body {
+    font-family: 'Open Sans'!important;
+}
+.place-filter {
+    text-align: center;
+    margin-bottom: 35px;
+}
+.place-filter div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Swipe 2 required styles */
+
+.swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+}
+.swipe-wrap {
+    overflow: hidden;
+    position: relative;
+}
+.swipe-wrap > div {
+    float:left;
+    width:100%;
+    position: relative;
+}
+
+.image-slider {
+    margin-bottom: 30px;
+    height: 150px;
+    border: 1px solid #eee;
+    background: #fff;
+    text-align: center;
+    line-height: 150px;
+    font-size: 30px;
+    color: #ddd;
+}
+.map {
+    height: 200px;
+}
