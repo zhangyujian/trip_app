@@ -13,6 +13,7 @@
     $(document).ready(function(){
         $.ajax({
             type:"GET",
+            //url:"test.txt",
             url:"http://121.199.29.125:3004/list",
             dataType:"json",
             success:function(data){
@@ -30,21 +31,20 @@
 </head>
 <body>
 <div data-role="page" data-quicklinks="true">
-    <div data-role="header" data-theme="c">
+    <div data-role="header" data-theme="a">
         <a href="#mainPanel" data-role="button"
            data-icon="bars"
            data-iconpos="notext"
-           data-theme="c"
-           data-inline="true">
-            Bars</a>
-        <h1>我的计划</h1>
-        <a href="add_plan.html" data-role="button" data-icon="plus" data-iconpos="notext"
-           data-transition="slidefade" >add plan</a>
+           data-theme="a"
+           data-inline="true">菜单</a>
+        <h1>列表</h1>
+        <a href="search.html" data-role="button" data-icon="search" data-iconpos="notext"
+           data-transition="slidefade" >搜索</a>
     </div>
     <div data-role="content">
         <ul id="result" data-role="listview" data-icon="false">
             <li>
-                <a href="plan_detail.html" >
+                <a href="detail.html" >
                     <img src="css/images/shanghai.jpg">
                     <h2>香格里拉</h2>
                     <p>2014/04/16</p>
@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li>
-                <a href="plan_detail.html" >
+                <a href="detail.html" >
                     <img src="css/images/shanghai.jpg">
                     <h2>巴厘岛</h2>
                     <p>2013/6/20</p>
@@ -64,8 +64,8 @@
 
     <div data-role="panel" id="mainPanel" data-theme="a" data-position="left" display=“push”>
         <ul>
-            <li>foo</li>
-            <li>bar</li>
+            <li>旅游伴侣</li>
+            <li>景点</li>
         </ul>
     </div>
 </div>
