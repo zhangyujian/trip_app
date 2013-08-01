@@ -13,15 +13,15 @@
     $(document).ready(function(){
         $.ajax({
             type:"GET",
-            //url:"test.txt",
-            url:"http://121.199.29.125:3004/list",
+            url:"test.txt",
+            //url:"http://121.199.29.125:3004/list",
             dataType:"json",
             success:function(data){
                 var music="";
                 //i表示在data中的索引位置，n表示包含的信息的对象
                 $.each(data,function(i,n){
                     //获取对象中属性为optionsValue的值
-                    music+="<li>"+n["title"]+"</li>";
+                    music+='<li><a href=detail.html?'+n["_id"]+'>'+n["title"]+'</a></li>';
                 });
                 $('#result').append(music);
             }
@@ -44,7 +44,7 @@
     <div data-role="content">
         <ul id="result" data-role="listview" data-icon="false">
             <li>
-                <a href="detail.html" >
+                <a href="detail.html?123" >
                     <img src="css/images/shanghai.jpg">
                     <h2>香格里拉</h2>
                     <p>2014/04/16</p>
