@@ -12,7 +12,10 @@
     <script type="text/javascript" src="treep.js"></script>
     <script>
     $(document).ready(function(){
-        var url = window.location.href.split('?')[1];
+        //var url = window.location.href.split('?')[1];
+        var url2 = $.mobile.path.parseUrl(window.location).href;
+        //var url3 = $.mobile.path.parseUrl(window.location).hash;
+        var url = url2.split('?')[1]
         //console.log(url);
         $.ajax({
             type:"GET",
@@ -21,9 +24,11 @@
             dataType:"json",
             success:function(data){
                 var address = data.province + data.city;
+                $('.j_title').html(data.title);
                 $('.j_address').html(address);
                 $('.j_phone').html(data.weather);
                 $('.j_content').html(data.content);
+                $('#result').listview('refresh');
             }
         });
     });
@@ -33,7 +38,7 @@
 <div data-role="page" data-quicklinks="true">
     <div data-role="header" data-theme="a">
         <a href="#" data-icon="back" data-iconpos="notext" data-rel="back">返回</a>
-        <h1>香格里拉</h1>
+        <h1 class="j_title">故宫博物院</h1>
         <a href="#" data-icon="search" data-iconpos="notext">搜索</a>
     </div>
 
