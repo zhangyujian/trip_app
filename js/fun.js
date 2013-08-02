@@ -18,7 +18,7 @@ $(document).delegate("#index","pageinit", function() {
         }
     });
 });
-localStorage.url = "detail.html?51f9d967eed181a42f000002";
+//localStorage.url = "detail.html?51f9d967eed181a42f000002";
 function beforechange( e, data ) {
     if ( typeof data.toPage != "string" ) {
         var url = $.mobile.path.parseUrl(e.target.baseURI),
@@ -29,15 +29,12 @@ function beforechange( e, data ) {
             //page.find("#url").append(decodeURIComponent(d));
             $('body').attr("date-current-url",decodeURIComponent(d));
             localStorage.url = decodeURIComponent(d);
-            //alert(1);
-            //console.log(decodeURIComponent(d));
-            
         }
     }
 }
 
 //detail page info
-$(document).delegate("#detail","pageinit", function() {
+$(document).delegate("#detail","pageshow", function() {
     var fullurl = $('body').attr("date-current-url");
     var fullurl = localStorage.url;
     var url = fullurl.split('?')[1];
