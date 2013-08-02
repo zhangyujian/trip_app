@@ -1,3 +1,4 @@
+
 //index page info
 $(document).delegate("#index","pageinit", function() {
     $(document).bind( "pagebeforechange", beforechange);
@@ -17,26 +18,30 @@ $(document).delegate("#index","pageinit", function() {
         }
     });
 });
-
+localStorage.url = "detail.html?51f9d967eed181a42f000002";
 function beforechange( e, data ) {
     if ( typeof data.toPage != "string" ) {
         var url = $.mobile.path.parseUrl(e.target.baseURI),
         re = /detail.html/;
-        
         if(url.href.search(re) != -1){
             var page = $(e.target).find("#detail");
             var d = e.target.baseURI;
-            var liurl = decodeURIComponent(d);
             //page.find("#url").append(decodeURIComponent(d));
-            localStorage.url = liurl;
+            $('body').attr("date-current-url",decodeURIComponent(d));
+            localStorage.url = decodeURIComponent(d);
+            //alert(1);
+            //console.log(decodeURIComponent(d));
+            
         }
     }
 }
 
 //detail page info
 $(document).delegate("#detail","pageinit", function() {
+    var fullurl = $('body').attr("date-current-url");
     var fullurl = localStorage.url;
     var url = fullurl.split('?')[1];
+    //console.log(url);
     $.ajax({
         type:"GET",
         url:"http://121.199.29.125:3004/detail/"+ url,
