@@ -1,0 +1,55 @@
+//index page info
+$(document).delegate("#index","pageinit", function() {
+    $(document).bind( "pagebeforechange", beforechange);
+    $.ajax({
+        type:"GET",
+        //url:"test.txt",
+        url:"http://121.199.29.125:3004/list",
+        dataType:"json",
+        success:function(data){
+            var html="";
+            //i表示在data中的索引位置，n表示包含的信息的对象
+            $.each(data,function(i,n){
+                //获取对象中属性为optionsValue的值
+                html+='<li><a href=detail.html?'+n["_id"]+'><h2>'+n["title"]+'</h2><p>级别'+n["grade"]+'</p></a></li>';
+            });
+            $('#result').append(html);
+            $('#result').listview('refresh');
+        }
+    });
+});
+
+function beforechange( e, data ) {
+    if ( typeof data.toPage != "string" ) {
+        var url = $.mobile.path.parseUrl(e.target.baseURI),
+        re = /detail.html/;
+        if(url.href.search(re) != -1){
+            var page = $(e.target).find("#detail");
+            var d = e.target.baseURI;
+            var liurl = decodeURIComponent(d);
+            //page.find("#url").append(decodeURIComponent(d));
+            localStorage.url = liurl.toString();
+        }
+    }
+}
+
+//detail page info
+$(document).delegate("#detail","pageinit", function() {
+    var fullurl = localStorage.url;
+    var url = fullurl.split('?')[1];
+    //console.log(url);
+    $.ajax({
+        type:"GET",
+        //url:"test2.txt",
+        url:"http://121.199.29.125:3004/detail/"+ url,
+        dataType:"json",
+        success:function(data){
+            var address = data.province + data.city;
+            $('.j_title').html(data.title);
+            $('.j_address').html(address);
+            $('.j_phone').html(data.weather);
+            $('.j_content').html(data.content);
+            $('#result').listview('refresh');
+        }
+    });
+});

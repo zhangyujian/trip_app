@@ -8,30 +8,10 @@
     <link rel="stylesheet" href="css/treep.css">
     <script src="js/jquery.js"></script>
     <script src="js/jquery.mobile.js"></script>
-    <script type="text/javascript" src="treep.js"></script>
-    <script>
-    $(document).ready(function(){
-        $.ajax({
-            type:"GET",
-            //url:"test.txt",
-            url:"http://121.199.29.125:3004/list",
-            dataType:"json",
-            success:function(data){
-                var music="";
-                //i表示在data中的索引位置，n表示包含的信息的对象
-                $.each(data,function(i,n){
-                    //获取对象中属性为optionsValue的值
-                    music+='<li><a href=detail.html?'+n["_id"]+'><h2>'+n["title"]+'</h2><p>级别'+n["grade"]+'</p></a></li>';
-                });
-                $('#result').append(music);
-                $('#result').listview('refresh');
-            }
-        });
-    });
-    </script>
+    <script src="js/fun.js"></script>
 </head>
 <body>
-<div data-role="page" data-quicklinks="true">
+<div id="index" data-role="page" data-quicklinks="true">
     <div data-role="header" data-theme="a">
         <a href="#mainPanel" data-role="button"
            data-icon="bars"
@@ -43,15 +23,7 @@
            data-transition="slidefade" >搜索</a>
     </div>
     <div data-role="content">
-        <ul id="result" data-role="listview" data-icon="false">
-            <!--li>
-                <a href="detail.html?123" >
-                    <img src="css/images/shanghai.jpg">
-                    <h2>香格里拉</h2>
-                    <p>级别：AAAA</p>
-                </a>
-            </li-->
-        </ul>
+        <ul id="result" data-role="listview" data-icon="false"></ul>
     </div>
 
     <div data-role="panel" id="mainPanel" data-theme="a" data-position="left" display=“push”>

@@ -9,37 +9,13 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery.mobile.js"></script>
     <script src="js/swipe.js"></script>
-    <script type="text/javascript" src="treep.js"></script>
-    <script>
-    $(document).ready(function(){
-        //var url = window.location.href.split('?')[1];
-        //var url2 = $.mobile.path.parseUrl(window.location).href;
-        //var url3 = $.mobile.path.parseUrl(window.location).hash;
-        //var url = url2.split('?')[1]
-        //console.log(url);
-        //$("#detail").attr("data-url")
-        $.ajax({
-            type:"GET",
-            //url:"test2.txt",
-            url:"http://121.199.29.125:3004/detail/"+ url,
-            dataType:"json",
-            success:function(data){
-                var address = data.province + data.city;
-                $('.j_title').html(data.title);
-                $('.j_address').html(address);
-                $('.j_phone').html(data.weather);
-                $('.j_content').html(data.content);
-                $('#result').listview('refresh');
-            }
-        });
-    });
-    </script>
+    <script src="js/fun.js"></script>
 </head>
 <body>
-<div data-role="page" data-quicklinks="true">
+<div id="detail" data-role="page" data-quicklinks="true">
     <div data-role="header" data-theme="a">
         <a href="#" data-icon="back" data-iconpos="notext" data-rel="back">返回</a>
-        <h1 class="j_title">故宫博物院</h1>
+        <h1 class="j_title"></h1>
         <a href="#" data-icon="search" data-iconpos="notext">搜索</a>
     </div>
 
@@ -50,8 +26,8 @@
         <ul id="result" data-role="listview" data-theme="d">
             <li>
                 <a href="map.html" >
-                    <h2>地址</h2>
-                    <p class="j_address">嘉定区南翔镇古猗园路210号(近沪宜公路)</p>
+                    <h2 id="title">地址</h2>
+                    <p class="j_address"></p>
                 </a>
             </li>
             <li>
@@ -62,7 +38,7 @@
             </li>
             <li>
                 <h2>简介</h2>
-                <p class="j_content">东方明珠广播电视塔日景(17张)东方明珠塔[1]位于上海黄浦江畔、浦东陆家嘴嘴尖上，1991年7月30日动工，1994年10月1日建成，东方明珠塔高468米，1994年2月，国家主席江泽民题写了“东方明珠广播电视塔”的塔名。上海东方明珠广播电视塔是上海旅游新地标。</p>
+                <p class="j_content"></p>
             </li>
         </ul>
     </div>
