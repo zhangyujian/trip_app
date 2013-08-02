@@ -3,9 +3,8 @@ $(document).delegate("#index","pageinit", function() {
     $(document).bind( "pagebeforechange", beforechange);
     $.ajax({
         type:"GET",
-        //url:"test.txt",
         url:"http://121.199.29.125:3004/list",
-        dataType:"json",
+        dataType:"jsonp",
         success:function(data){
             var html="";
             //i表示在data中的索引位置，n表示包含的信息的对象
@@ -23,12 +22,13 @@ function beforechange( e, data ) {
     if ( typeof data.toPage != "string" ) {
         var url = $.mobile.path.parseUrl(e.target.baseURI),
         re = /detail.html/;
+        
         if(url.href.search(re) != -1){
             var page = $(e.target).find("#detail");
             var d = e.target.baseURI;
             var liurl = decodeURIComponent(d);
             //page.find("#url").append(decodeURIComponent(d));
-            localStorage.url = liurl.toString();
+            localStorage.url = liurl;
         }
     }
 }
@@ -37,12 +37,10 @@ function beforechange( e, data ) {
 $(document).delegate("#detail","pageinit", function() {
     var fullurl = localStorage.url;
     var url = fullurl.split('?')[1];
-    //console.log(url);
     $.ajax({
         type:"GET",
-        //url:"test2.txt",
         url:"http://121.199.29.125:3004/detail/"+ url,
-        dataType:"json",
+        dataType:"jsonp",
         success:function(data){
             var address = data.province + data.city;
             $('.j_title').html(data.title);
