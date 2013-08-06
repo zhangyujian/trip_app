@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>旅游伴侣</title>
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css">
-<title>追梦流云</title>
-
 <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jquery.mobile.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/iscroll.js"></script>
@@ -25,7 +24,7 @@
                                 li.innerText = '追梦！！ 这是我第' + (++count) + "次追梦！";//增加内容
                                 el.insertBefore(li, el.childNodes[0]);//在id为add的子标签中加入li标签
                         }
-                        myScroll.refresh(); // 刷新
+                        $('.list_style').listview('refresh'); // 刷新
                 }, 1000); //1秒
         }
         function pullUpAction() {//下拉事件
@@ -109,17 +108,11 @@
         }, false);
 </script>
 <style type="text/css" media="all">
-li,.list_style li {
-        height: 20px;
-        text-align: center;
-        line-height: 20px;
-}
-
 #wrapper {
         position: absolute;
         z-index: 1;
-        top: 80px;
-        bottom: 60px;
+        top: 0px;
+        bottom: 0;
         left: 0;
         width: 100%;
         overflow: hidden;
@@ -195,58 +188,49 @@ to {
 </style>
 </head>
 <body>
-        <div data-role="page" data-theme="a">
-                <div data-role="header" data-position="fixed">
-                        <h3>追梦流云</h3>
-                        <div data-role="navbar">
-                                <ul>
-                                        <li><a href="#">追</a></li>
-                                        <li><a href="#">梦</a></li>
-                                        <li><a href="#">流</a></li>
-                                        <li><a href="#">云</a></li>
-                                </ul>
-                        </div>
-                </div>
-                <div id="wrapper" data-role="content">
-                        <div id="scroller">
-                                <div id="pullDown">
-                                    <span class="pullDownIcon"></span> <span class="pullDownLabel">准备刷新...</span>
-                                </div>
-                                <ul id="add" class="list_style" data-role="listview" data-theme="c">
-                                        <li>我是天边的一片云，</li>
-                                        <li>流动的 是我，</li>
-                                        <li>在那遥远的天际，</li>
-                                        <li>那里是完美世界，</li>
-                                        <li>我要带上梦想的期冀，</li>
-                                        <li>我要迈出坚定的步伐</li>
-                                        <li>前去追梦！</li>
-                                        <li>————来自追梦流云</li>
-                                        <li>你想的越多，顾虑就越多，</li>
-                                        <li>什么都不想的时候反而能一往直前，</li>
-                                        <li>你害怕的越多，困难就越多，</li>
-                                        <li>什么都不怕的时候一切反而没那么难。</li>
-                                        <li>别害怕,别顾虑，想到就去做，</li>
-                                        <li>这世界就是这样:</li>
-                                        <li>当你不敢去实现梦想的时候,</li>
-                                        <li>梦想会离你越来越远，</li>
-                                        <li>当你勇敢地去追梦的时候</li>
-                                        <li>全世界都会来帮你.</li>
-                                        <li>谨此献给：</li>
-                                        <li>所有正在追梦的你</li>
-                                </ul>
-                                <div id="pullUp">
-                                        <span class="pullUpIcon"></span><span class="pullUpLabel">显示更多...</span>
-                                </div>
-                        </div>
-                </div>
-                <div data-role="footer" data-position="fixed">
-                        <div data-role="navbar" style="height: 60px;">
-                                <ul>
-                                        <li><a href="#" data-role="button" data-icon="gear">追梦</a></li>
-                                        <li><a href="#" data-role="button" data-icon="gear">流云</a></li>
-                                </ul>
-                        </div>
-                </div>
+<div id="index" data-role="page" data-quicklinks="true">
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <a href="#mainPanel" data-role="button"
+           data-icon="bars"
+           data-iconpos="notext"
+           data-theme="a"
+           data-inline="true">菜单</a>
+        <h1>景点</h1>
+        <a href="search.html" data-role="button" data-icon="search" data-iconpos="notext"
+           data-transition="slidefade" >搜索</a>
+    </div>
+    <div id="wrapper" data-role="content">
+        <div id="scroller">
+            <div id="pullDown">
+                <span class="pullDownIcon"></span> <span class="pullDownLabel">准备刷新...</span>
+            </div>
+            <ul id="add" class="list_style" data-role="listview" data-theme="c">
+                    <li>我是天边的一片云，</li>
+                    <li>流动的 是我，</li>
+                    <li>在那遥远的天际，</li>
+                    <li>那里是完美世界，</li>
+                    <li>我要带上梦想的期冀，</li>
+                    <li>我要迈出坚定的步伐</li>
+                    <li>前去追梦！</li>
+                    <li>————来自追梦流云</li>
+                    <li>你想的越多，顾虑就越多，</li>
+                    <li>什么都不想的时候反而能一往直前，</li>
+                    <li>你害怕的越多，困难就越多，</li>
+                    <li>什么都不怕的时候一切反而没那么难。</li>
+                    <li>别害怕,别顾虑，想到就去做，</li>
+                    <li>这世界就是这样:</li>
+                    <li>当你不敢去实现梦想的时候,</li>
+                    <li>梦想会离你越来越远，</li>
+                    <li>当你勇敢地去追梦的时候</li>
+                    <li>全世界都会来帮你.</li>
+                    <li>谨此献给：</li>
+                    <li>所有正在追梦的你</li>
+            </ul>
+            <div id="pullUp">
+                    <span class="pullUpIcon"></span><span class="pullUpLabel">显示更多...</span>
+            </div>
         </div>
+    </div>
+</div>
 </body>
 </html>
