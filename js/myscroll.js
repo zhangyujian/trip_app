@@ -18,9 +18,10 @@ function pullUpAction () {// 这个函数是下拉刷新，但是刷新后样式
                     el.appendChild(li, el.childNodes[0]);
                 };
                 $('#thelist').listview('refresh');
+                myScroll.refresh();
             }//;success不能跟分号
         });
-        myScroll.refresh();}, 1000);
+        }, 1000);
 }
 
 function pullDownAction () {
@@ -47,39 +48,39 @@ function loaded() {
         onRefresh: function () {
             if (pullDownEl.className.match('loading')) {
                 pullDownEl.className = '';
-                pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
+                pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
             } else if (pullUpEl.className.match('loading')) {
                 pullUpEl.className = '';
-                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
             }
         },
         onScrollMove: function () {
             if (this.y > 5 && !pullDownEl.className.match('flip')) {
                 pullDownEl.className = 'flip';
-                pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Release to refresh...';
+                pullDownEl.querySelector('.pullDownLabel').innerHTML = '释放刷新...';
                 this.minScrollY = 0;
             } else if (this.y < 5 && pullDownEl.className.match('flip')) {
                 pullDownEl.className = '';
-                pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
+                pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
                 this.minScrollY = -pullDownOffset;
             } else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
                 pullUpEl.className = 'flip';
-                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '释放刷新...';
                 this.maxScrollY = this.maxScrollY;
             } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
                 pullUpEl.className = '';
-                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
                 this.maxScrollY = pullUpOffset;
             }
         },
         onScrollEnd: function () {
             if (pullDownEl.className.match('flip')) {
                 pullDownEl.className = 'loading';
-                pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Loading...';
+                pullDownEl.querySelector('.pullDownLabel').innerHTML = '等待...';
                 pullDownAction();    // Execute custom function (ajax call?)
             } else if (pullUpEl.className.match('flip')) {
                 pullUpEl.className = 'loading';
-                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';
+                pullUpEl.querySelector('.pullUpLabel').innerHTML = '等待...';
                 pullUpAction();    // Execute custom function (ajax call?)
             }
         }

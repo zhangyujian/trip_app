@@ -1,9 +1,12 @@
 #wrapper {
     position:absolute; z-index:1;
-    top:0; bottom:48px; left:-9999px;
+    top:0; 
+    bottom:0; 
+    left:-9999px;
     width:100%;
     background:#aaa;
     overflow:auto;
+    
 }
 
 #scroller {
@@ -19,6 +22,7 @@
     padding:0;
     margin:0;
     width:100%;
+    height: 100%;
     text-align:left;
 }
 

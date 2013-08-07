@@ -30,7 +30,7 @@ function beforechange( e, data ) {
             var page = $(e.target).find("#detail");
             var d = e.target.baseURI;
             //page.find("#url").append(decodeURIComponent(d));
-            $('body').attr("date-current-url",decodeURIComponent(d));
+            //$('body').attr("date-current-url",decodeURIComponent(d));
             localStorage.url = decodeURIComponent(d);
         }
     }
