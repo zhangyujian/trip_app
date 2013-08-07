@@ -13,8 +13,11 @@ $(document).delegate("#index","pageinit", function() {
                 //获取对象中属性为optionsValue的值
                 html+='<li><a href=detail.html?'+n["_id"]+'><h2>'+n["title"]+'</h2><p>级别'+n["grade"]+'</p></a></li>';
             });
-            $('#result').append(html);
-            $('#result').listview('refresh');
+            $('#thelist').append(html);
+            $('#thelist').listview('refresh');
+        },
+        error:function(){
+            alert(error);
         }
     });
 });
@@ -49,7 +52,7 @@ $(document).delegate("#detail","pageshow", function() {
             $('.j_address').html(address);
             $('.j_phone').html(data.weather);
             $('.j_content').html(data.content);
-            $('#result').listview('refresh');
+            $('#thelist').listview('refresh');
         }
     });
 });
