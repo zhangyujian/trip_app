@@ -41,7 +41,7 @@ body {
 }
 .image-slider .swipe-wrap .wrap {
     max-width: 640px;
-    height: 280px;
+    height: 220px;
     display: block;
     margin: 20px auto 15px;
     position: relative;
