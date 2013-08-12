@@ -39,7 +39,7 @@ function beforechange( e, data ) {
 //detail page info
 $(document).delegate("#detail","pageshow", function() {
     var fullurl = $('body').attr("date-current-url");
-    var fullurl = localStorage.url;
+    var fullurl = localStorage.url + '';
     var url = fullurl.split('?')[1];
     //console.log(url);
     $.ajax({
@@ -55,4 +55,26 @@ $(document).delegate("#detail","pageshow", function() {
             $('#thelist').listview('refresh');
         }
     });
+
+    var elem = document.getElementById('mySwipe');
+    window.mySwipe = Swipe(elem, {
+      // startSlide: 4,
+      auto: 2500,
+      continuous: true,
+      // disableScroll: true,
+      // stopPropagation: true,
+      callback: function(pos) {
+        var i = bullets.length;
+        while (i--) {
+            bullets[i].className = ' ';
+        }
+        bullets[pos].className = 'on';
+
+      }
+      // transitionEnd: function(index, element) {}
+    });
+    var bullets = document.getElementById('position').getElementsByTagName('li');
+
+    // with jQuery
+    // window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
 });
