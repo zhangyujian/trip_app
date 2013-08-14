@@ -6,18 +6,17 @@ var myScroll,
 
 function pullUpAction () {// 这个函数是下拉刷新，但是刷新后样式有问题，高度不变，滚动条拉到底部了，内容却没有达到底部。
     setTimeout(function () {//如果去掉$.ajax后换成其他的循环函数，正常。
-        var el, li, i;
-        el = document.getElementById('thelist');
+        var el, lis='', i;
+        el = $('#thelist');
         $.ajax({ url:'http://121.199.29.125:3004/list/?p='+(++n)+'',//从该处获取数据
             dataType:'jsonp',
             success:function(data){
                 for (i=0;i<8;i++){
                     //var time = getLocalTime(data[i]['pub_time']);
-                    li = document.createElement('li');
-                    li.innerHTML = "<a href=detail.html?"+data[i]['_id']+">"+data[i]['title']+"</a>";
-                    el.appendChild(li, el.childNodes[0]);
+                    lis += "<li><a href=detail.html?"+data[i]['_id']+">"+data[i]['title']+"</a></li>";
                 };
-                $('#thelist').listview('refresh');
+                el.append(lis);
+                el.listview('refresh');
                 myScroll.refresh();
             }//;success不能跟分号
         });
@@ -26,14 +25,16 @@ function pullUpAction () {// 这个函数是下拉刷新，但是刷新后样式
 
 function pullDownAction () {
     setTimeout(function () {
-        var el, li, i;
-        el = document.getElementById('thelist');
-        for (i=0;i<5;i++ ){li = document.createElement('li');
-            li.innerHTML = 'Generated row ' + (++generatedCount);
-            el.insertBefore(li, el.childNodes[0]);
+        var el = $('#thelist') , lis='', i;
+
+        for (i=0;i<5;i++ ){
+            lis += '<li><a>'+ 'Generated row ' + (++generatedCount)+ '</a></li>';
         };
-        $('#thelist').listview('refresh');
-        myScroll.refresh();}, 1000);
+        el.prepend(lis);
+        el.listview('refresh');
+        myScroll.refresh();
+    }, 1000);
+    // $('#thelist').listview('refresh');
 }
 
 function loaded() {

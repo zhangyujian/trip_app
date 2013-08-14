@@ -2,16 +2,18 @@
 //index page info
 $(document).delegate("#index","pageinit", function() {
     $(document).bind( "pagebeforechange", beforechange);
+    
     $.ajax({
         type:"GET",
         url:"http://121.199.29.125:3004/list",
         dataType:"jsonp",
         success:function(data){
-            var html="";
             //i表示在data中的索引位置，n表示包含的信息的对象
+            var html = '';
             $.each(data,function(i,n){
                 //获取对象中属性为optionsValue的值
                 html+='<li><a href=detail.html?'+n["_id"]+'><h2>'+n["title"]+'</h2><p>级别'+n["grade"]+'</p></a></li>';
+                console.log(html);
             });
             $('#thelist').append(html);
             $('#thelist').listview('refresh');
@@ -36,26 +38,7 @@ function beforechange( e, data ) {
     }
 }
 
-//detail page info
-$(document).delegate("#detail","pageshow", function() {
-    var fullurl = $('body').attr("date-current-url");
-    var fullurl = localStorage.url + '';
-    var url = fullurl.split('?')[1];
-    //console.log(url);
-    $.ajax({
-        type:"GET",
-        url:"http://121.199.29.125:3004/detail/"+ url,
-        dataType:"jsonp",
-        success:function(data){
-            var address = data.province + data.city;
-            $('.j_title').html(data.title);
-            $('.j_address').html(address);
-            $('.j_phone').html(data.weather);
-            $('.j_content').html(data.content);
-            $('#thelist').listview('refresh');
-        }
-    });
-
+function swipeSlider() {
     var elem = document.getElementById('mySwipe');
     window.mySwipe = Swipe(elem, {
       // startSlide: 4,
@@ -77,4 +60,44 @@ $(document).delegate("#detail","pageshow", function() {
 
     // with jQuery
     // window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
+}
+
+//detail page info
+$(document).delegate("#detail","pageshow", function() {
+    
+
+    var fullurl = $('body').attr("date-current-url");
+    var fullurl = localStorage.url + '';
+    var url = fullurl.split('?')[1];
+    //console.log(url);
+    $.ajax({
+        type:"GET",
+        url:"http://121.199.29.125:3004/detail/"+ url,
+        dataType:"jsonp",
+        success:function(data){
+            var address = data.province + data.city;
+            $('#j_title').html(data.title);
+            $('#j_address').html(address);
+            $('#j_phone').html(data.weather);
+            $('#j_content').html(data.content);
+            console.log($('#j_address'));
+        }
+    });
+    swipeSlider();
+    $('#thelist').listview('refresh');
+});
+
+$(document).delegate('#map_page', 'pageinit', function() {
+    console.log('showing...');
+    $('#map_canvas').gmap().bind('init', function(ev, map) {
+        $('#map_canvas').gmap(
+            'addMarker', 
+            {
+                'position': '39.93343343839837, 116.39242172241211', 
+                'bounds': true
+            }
+        ).click(function() {
+            $('#map_canvas').gmap('openInfoWindow', {'content': 'Hello World!'}, this);
+        });
+    });
 });
