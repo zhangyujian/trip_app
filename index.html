@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>完美旅行</title>
+<link href="css/style.css" rel="stylesheet">
+<script type="text/javascript" src="js/iscroll.js"></script>
+
+<script type="text/javascript">
+
+var myScroll;
+
+function loaded() {
+    myScroll = new iScroll('wrapper',{ mouseWheel: true ,vScrollbar: true,fadeScrollbar: false,hideScrollbar: true,bounce: true,fixedScrollbar: true});
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+/* * * * * * * *
+ *
+ * Use this for high compatibility (iDevice + Android)
+ *
+ */
+document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+/*
+ * * * * * * * */
+
+
+/* * * * * * * *
+ *
+ * Use this for iDevice only
+ *
+ */
+//document.addEventListener('DOMContentLoaded', loaded, false);
+/*
+ * * * * * * * */
+
+
+/* * * * * * * *
+ *
+ * Use this if nothing else works
+ *
+ */
+//window.addEventListener('load', setTimeout(function () { loaded(); }, 200), false);
+/*
+ * * * * * * * */
+
+</script>
+</head>
+<body>
+
+<header>完美旅行</header>
+<div id="wrapper" style="overflow: hidden;">
+    <div id="scroller" style="-webkit-transition: -webkit-transform 0ms; transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0px) translateZ(0px);">
+        <ul id="thelist">
+            <li><a href="detail.html">Pretty row 1</a></li>
+            <li><a href="#">Pretty row 2</a></li>
+            <li>Pretty row 3</li>
+            <li>Pretty row 4</li>
+            <li>Pretty row 5</li>
+            <li>Pretty row 6</li>
+            <li>Pretty row 7</li>
+            <li>Pretty row 8</li>
+            <li>Pretty row 9</li>
+            <li>Pretty row 10</li>
+        </ul>
+    </div>
+</div>
+<footer>
+    <ul>
+        <li>旅行</li>
+        <li>热门</li>
+        <li>计划</li>
+        <li>我</li>
+    </ul>
+</footer>
+
+<script src="js/xui-more-1.0.0.min.js"></script>
+<script src="js/fun.js"></script>
+</body>
+</html>
